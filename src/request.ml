@@ -125,4 +125,4 @@ let send ?(meth=`GET) ?(additional_headers=[]) ?body uri =
     | Ok (Body _) -> assert false
     | Error err_str -> Lwt.return err_str
 
-let private_github_token = "26c3db443018c2e59ce42343bd162e9005c1c32f"
+let private_github_token = Unix.getenv "GH_TOKEN"
