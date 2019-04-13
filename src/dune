@@ -1,0 +1,11 @@
+(executable
+ (name lambda)
+ (libraries lambda-runtime now-lambda h2-lwt-unix h2 lwt_ssl logs.fmt fmt.tty
+   cow uri)
+ (preprocess
+  (pps graphql_ppx ppxlib.runner)))
+
+(env
+ (static
+  (flags
+   (:standard -ccopt -static))))

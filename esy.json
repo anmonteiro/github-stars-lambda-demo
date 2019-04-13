@@ -1,0 +1,73 @@
+{
+  "name": "dogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ocaml": "~4.7.1000",
+    "@opam/dune": "*",
+    "@opam/lambda-runtime": "*",
+    "@opam/now-lambda": "*",
+    "@opam/httpaf": "*",
+    "@opam/httpaf-lwt": "*",
+    "@opam/h2": "*",
+    "@opam/h2-lwt-unix": "*",
+    "@opam/lwt_ssl": "*",
+    "@opam/logs": "*",
+    "@opam/fmt": "*",
+    "@opam/conf-openssl": "*",
+    "@opam/reason": " *",
+    "@opam/graphql_ppx": "*",
+    "@opam/graphql_ppx_base": "*",
+    "@opam/omd": "*",
+    "@opam/cow": "*",
+    "@opam/uri": "*"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*"
+  },
+  "resolutions": {
+    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#96ec09d",
+    "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#aa7ad76",
+    "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#5768886",
+    "@opam/now-lambda": "anmonteiro/aws-lambda-ocaml-runtime:now-lambda.opam#5768886",
+    "@opam/conf-openssl": {
+      "source": "no-source:",
+      "override": {
+        "dependencies": {
+          "@opam/conf-pkg-config": "*",
+          "@esy-packages/esy-openssl": "esy-packages/esy-openssl#65efbc9"
+        }
+      }
+    },
+    "@opam/ssl": "anmonteiro/ocaml-ssl:ssl.opam#b965d15",
+    "@opam/graphql_ppx_base": {
+      "source": "mhallin/graphql_ppx:graphql_ppx_base.opam#5796b37",
+      "override": {
+        "build": [
+          "dune build -p graphql_ppx_base"
+        ],
+        "dependencies": {
+          "@opam/ppxlib": "*"
+        }
+      }
+    },
+    "@opam/graphql_ppx": {
+      "source": "mhallin/graphql_ppx:esy.json#5796b37",
+      "override": {
+        "build": [
+          "dune build -p graphql_ppx"
+        ],
+        "dependencies": {
+          "@opam/ppxlib": "*",
+          "@opam/graphql_ppx_base": "*"
+        }
+      }
+    }
+  },
+  "esy": {
+    "buildsInSource": "unsafe"
+  }
+}
