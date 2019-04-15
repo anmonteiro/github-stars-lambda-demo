@@ -60,26 +60,24 @@ query ($name: String!, $owner: String!, $first: Int!, $token: String!) {
 |}
 ];
 
-let send_response = body => {
-  Lwt_result.return @@
-  Now_lambda.{
-    status_code: 200,
-    headers:
-      Lambda_runtime.StringMap.(empty |> add("content-type", "text/html")),
-    body,
-    encoding: None,
-  };
+let send_response = (reqd, body) => {
+  open Now;
+  let response =
+    Response.create(
+      ~headers=Headers.of_list([("content-type", "text/html")]),
+      `OK,
+    );
+  Now.Reqd.respond_with_string(reqd, response, body);
 };
 
-let send_error_response = msg => {
-  Lwt_result.return @@
-  Now_lambda.{
-    status_code: 400,
-    headers:
-      Lambda_runtime.StringMap.(empty |> add("content-type", "text/html")),
-    body: msg,
-    encoding: None,
-  };
+let send_error_response = (reqd, msg) => {
+  open Now;
+  let response =
+    Response.create(
+      ~headers=Headers.of_list([("content-type", "text/html")]),
+      `Bad_request,
+    );
+  Now.Reqd.respond_with_string(reqd, response, msg);
 };
 
 let getGraphQLResponse = (~first=?, ~name, ~owner) => {
@@ -164,9 +162,9 @@ let getGraphQLResponse = (~first=?, ~name, ~owner) => {
   );
 };
 
-let handle_result =
+let handle_result = reqd =>
   fun
-  | Error(msg) => send_error_response(msg)
+  | Error(msg) => send_error_response(reqd, msg)
   | Ok({nameWithOwner, stars: {count, stargazers}, _}) => {
       let buf = Buffer.create(100);
       Html.(
@@ -222,25 +220,26 @@ let handle_result =
           ),
         )
       );
-      send_response(Buffer.contents(buf));
+      send_response(reqd, Buffer.contents(buf));
     };
 
-let handle = (~first=?, ~name, ~owner) => {
-  getGraphQLResponse(~first?, ~name, ~owner) >>= handle_result;
+let handle = (~first=?, ~name, ~owner, reqd) => {
+  getGraphQLResponse(~first?, ~name, ~owner) >|= handle_result(reqd);
 };
 
-let handler = (req: Now_lambda.now_proxy_request, _ctx) => {
+let handler = (reqd, _ctx) => {
+  let {Httpaf.Request.target, _} = Now.Reqd.request(reqd);
   let usage = "Usage: github-stars.anmonteiro.now.sh/?repo=username/repo";
-  let uri = Uri.of_string(req.path);
+  let uri = Uri.of_string(target);
   switch (Uri.(get_query_param(uri, "repo"))) {
   | Some(repo) =>
     switch (String.split_on_char('/', repo)) {
     | [owner, name] =>
-      handle(~first=?Uri.get_query_param(uri, "first"), ~owner, ~name)
-    | _ => send_error_response(usage)
+      handle(~first=?Uri.get_query_param(uri, "first"), ~owner, ~name, reqd)
+    | _ => Lwt.return(send_error_response(reqd, usage))
     }
-  | None => send_error_response(usage)
+  | None => Lwt.return(send_error_response(reqd, usage))
   };
 };
 
-let () = Now_lambda.io_lambda(handler);
+let () = Now.io_lambda(handler);

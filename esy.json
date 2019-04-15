@@ -9,7 +9,7 @@
     "ocaml": "~4.7.1000",
     "@opam/dune": "*",
     "@opam/lambda-runtime": "*",
-    "@opam/now-lambda": "*",
+    "@opam/now": "*",
     "@opam/httpaf": "*",
     "@opam/httpaf-lwt": "*",
     "@opam/h2": "*",
@@ -31,8 +31,8 @@
   "resolutions": {
     "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#96ec09d",
     "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#aa7ad76",
-    "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#5768886",
-    "@opam/now-lambda": "anmonteiro/aws-lambda-ocaml-runtime:now-lambda.opam#5768886",
+    "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#5891ed2",
+    "@opam/now": "anmonteiro/aws-lambda-ocaml-runtime:now.opam#5891ed2",
     "@opam/conf-openssl": {
       "source": "no-source:",
       "override": {
