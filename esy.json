@@ -11,7 +11,7 @@
     "@opam/lambda-runtime": "*",
     "@opam/now": "*",
     "@opam/httpaf": "*",
-    "@opam/httpaf-lwt": "*",
+    "@opam/httpaf-lwt-unix": "*",
     "@opam/h2": "*",
     "@opam/h2-lwt-unix": "*",
     "@opam/lwt_ssl": "*",
@@ -29,10 +29,13 @@
     "@opam/merlin": "*"
   },
   "resolutions": {
-    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#96ec09d",
-    "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#aa7ad76",
-    "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#5891ed2",
-    "@opam/now": "anmonteiro/aws-lambda-ocaml-runtime:now.opam#5891ed2",
+    "@opam/h2": "anmonteiro/ocaml-h2:h2.opam#57e678e",
+    "@opam/h2-lwt": "anmonteiro/ocaml-h2:h2-lwt.opam#57e678e",
+    "@opam/h2-lwt-unix": "anmonteiro/ocaml-h2:h2-lwt-unix.opam#57e678e",
+    "@opam/httpaf-lwt-unix": "inhabitedtype/httpaf:httpaf-lwt-unix.opam#fa9dc4e",
+    "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#fa9dc4e",
+    "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#9b95ff3",
+    "@opam/now": "anmonteiro/aws-lambda-ocaml-runtime:now.opam#9b95ff3",
     "@opam/conf-openssl": {
       "source": "no-source:",
       "override": {
