@@ -29,9 +29,6 @@
     "@opam/merlin": "*"
   },
   "resolutions": {
-    "@opam/h2": "anmonteiro/ocaml-h2:h2.opam#57e678e",
-    "@opam/h2-lwt": "anmonteiro/ocaml-h2:h2-lwt.opam#57e678e",
-    "@opam/h2-lwt-unix": "anmonteiro/ocaml-h2:h2-lwt-unix.opam#57e678e",
     "@opam/httpaf-lwt-unix": "inhabitedtype/httpaf:httpaf-lwt-unix.opam#fa9dc4e",
     "@opam/httpaf": "inhabitedtype/httpaf:httpaf.opam#fa9dc4e",
     "@opam/lambda-runtime": "anmonteiro/aws-lambda-ocaml-runtime:lambda-runtime.opam#9b95ff3",
