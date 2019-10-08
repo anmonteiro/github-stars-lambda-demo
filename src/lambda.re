@@ -5,7 +5,7 @@ module Json = {
   include Yojson.Safe.Util;
 
   let member_opt = (m, t) =>
-    try (Some(member(m, t))) {
+    try(Some(member(m, t))) {
     | _ => None
     };
 };
@@ -175,7 +175,6 @@ let handle_result = reqd =>
               head(meta(~charset="UTF-8", [])),
               body(
                 list([
-                  h1(string("LIVE FROM REASON CONF")),
                   h1(
                     string(
                       Format.asprintf(

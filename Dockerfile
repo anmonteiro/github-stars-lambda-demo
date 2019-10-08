@@ -8,7 +8,7 @@ RUN mkdir /esy
 WORKDIR /esy
 
 ENV NPM_CONFIG_PREFIX=/esy
-RUN npm install -g --unsafe-perm esy@0.5.6
+RUN npm install -g --unsafe-perm esy@0.5.8
 
 # now that we have esy installed we need a proper runtime
 
@@ -20,7 +20,8 @@ WORKDIR /
 
 COPY --from=build /esy /esy
 
-RUN apk add --no-cache ca-certificates wget bash curl perl-utils git patch gcc g++ musl-dev make m4 gmp-dev linux-headers
+RUN apk add --no-cache ca-certificates wget bash curl perl-utils git patch \
+                       gcc g++ musl-dev make m4 linux-headers coreutils
 
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk
@@ -35,10 +36,10 @@ RUN echo ' \
 {\
   "name": "package-base", \
   "dependencies": { \
-    "ocaml": "~4.7.1000", \
+    "ocaml": "~4.9.0", \
     "@opam/dune": "*", \
     "@opam/reason": "*", \
-    "@esy-packages/esy-openssl": "esy-packages/esy-openssl#65efbc9" \
+    "@opam/conf-openssl": "esy-packages/esy-openssl#860ad7f" \
   } \
 } \
 ' > esy.json

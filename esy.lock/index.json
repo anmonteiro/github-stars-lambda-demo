@@ -1,6 +1,6 @@
 {
   "checksum": "2e1b504140a6fb6cada1ad8a3c55f5cb",
-  "root": "dogs@link-dev:./esy.json",
+  "root": "github-stars@link-dev:./esy.json",
   "node": {
     "yarn-pkg-config@github:esy-ocaml/yarn-pkg-config#cca65f99674ed2d954d28788edeb8c57fada5ed0@d41d8cd9": {
       "id":
@@ -32,25 +32,9 @@
       "dependencies": [],
       "devDependencies": []
     },
-    "esy-help2man@github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443@d41d8cd9": {
-      "id":
-        "esy-help2man@github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443@d41d8cd9",
-      "name": "esy-help2man",
-      "version":
-        "github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443",
-      "source": {
-        "type": "install",
-        "source": [
-          "github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443"
-        ]
-      },
-      "overrides": [],
-      "dependencies": [],
-      "devDependencies": []
-    },
-    "dogs@link-dev:./esy.json": {
-      "id": "dogs@link-dev:./esy.json",
-      "name": "dogs",
+    "github-stars@link-dev:./esy.json": {
+      "id": "github-stars@link-dev:./esy.json",
+      "name": "github-stars",
       "version": "link-dev:./esy.json",
       "source": { "type": "link-dev", "path": ".", "manifest": "esy.json" },
       "overrides": [],
@@ -74,6 +58,22 @@
       "devDependencies": [
         "@opam/merlin@github:ocaml/merlin:merlin.opam#cfc28bd@8917bb23"
       ]
+    },
+    "esy-help2man@github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443@d41d8cd9": {
+      "id":
+        "esy-help2man@github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443@d41d8cd9",
+      "name": "esy-help2man",
+      "version":
+        "github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443",
+      "source": {
+        "type": "install",
+        "source": [
+          "github:esy-packages/esy-help2man#c8e6931d1dcf58a81bd801145a777fd3b115c443"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
     },
     "@opam/yojson@opam:1.7.0@7056d985": {
       "id": "@opam/yojson@opam:1.7.0@7056d985",
